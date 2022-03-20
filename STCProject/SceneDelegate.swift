@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         
         if let deepLink = DeepLinkParsing.shared.parse(url: url){
-            DeepLinkManager.shared.handleDeeplink( deepLink)
+            DeepLinkManager.shared.handleLink( deepLink)
         }
     
 //      for context in URLContexts {

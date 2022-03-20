@@ -29,7 +29,7 @@ class DeepLinkManager: LoginViewModelResponder {
         }
     }
     
-    func handleLink (_ deeplink : DeepLink){
+    func handleDeeplink (_ deeplink : DeepLink){
         self.deeplink = deeplink
         if deeplink.screenName.isPrivate{
             if LoginViewModel.isLogedin {

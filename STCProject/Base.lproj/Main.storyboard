@@ -154,7 +154,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLn-fa-zn6">
                                 <rect key="frame" x="37.666666666666657" y="353" width="300" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6l-AG-JOI">
                                 <rect key="frame" x="135.66666666666666" y="498.33333333333326" width="104" height="31"/>
@@ -172,6 +172,12 @@
                                     <constraint firstAttribute="height" constant="75" id="dh5-q3-ejX"/>
                                 </constraints>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The username or password is incorrect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Q8-FS-H6D">
+                                <rect key="frame" x="37.666666666666671" y="396" width="235.66666666666663" height="15.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OIR-Vk-yih"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -179,7 +185,9 @@
                             <constraint firstItem="gLn-fa-zn6" firstAttribute="width" secondItem="w7j-Pb-ZQu" secondAttribute="height" multiplier="75:203" id="3S0-xd-m9o"/>
                             <constraint firstItem="K6l-AG-JOI" firstAttribute="centerX" secondItem="w7j-Pb-ZQu" secondAttribute="centerX" id="5u5-7o-F2h"/>
                             <constraint firstItem="DHb-kU-9ys" firstAttribute="width" secondItem="w7j-Pb-ZQu" secondAttribute="height" multiplier="0.3" priority="999" id="7i2-Df-kiD"/>
+                            <constraint firstItem="2Q8-FS-H6D" firstAttribute="leading" secondItem="gLn-fa-zn6" secondAttribute="leading" id="GOp-mf-nfO"/>
                             <constraint firstItem="K6l-AG-JOI" firstAttribute="firstBaseline" secondItem="gLn-fa-zn6" secondAttribute="baseline" multiplier="1.3" constant="31.333333333333336" symbolType="layoutAnchor" id="RcV-XJ-OzZ"/>
+                            <constraint firstItem="2Q8-FS-H6D" firstAttribute="top" secondItem="gLn-fa-zn6" secondAttribute="bottom" constant="9" id="ddv-yH-b6U"/>
                             <constraint firstItem="DHb-kU-9ys" firstAttribute="top" secondItem="OIR-Vk-yih" secondAttribute="top" multiplier="1.6" constant="80" id="lud-aB-12e"/>
                             <constraint firstItem="DHb-kU-9ys" firstAttribute="centerX" secondItem="w7j-Pb-ZQu" secondAttribute="centerX" id="moY-Gp-xRe"/>
                             <constraint firstItem="rGH-ht-EK6" firstAttribute="top" secondItem="DHb-kU-9ys" secondAttribute="bottom" multiplier="1.1" constant="59" id="pdP-Lb-YIo"/>
@@ -192,6 +200,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="z9C-8O-TPe"/>
                     <connections>
+                        <outlet property="errorMessage" destination="2Q8-FS-H6D" id="hkf-fd-0xH"/>
                         <outlet property="passTF" destination="gLn-fa-zn6" id="2RV-QO-yxe"/>
                         <outlet property="usernameTF" destination="rGH-ht-EK6" id="YNM-UR-2xP"/>
                     </connections>
@@ -226,6 +235,9 @@
         </systemColor>
         <systemColor name="systemPurpleColor">
             <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

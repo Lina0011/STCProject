@@ -11,6 +11,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passTF: UITextField!
     
+    @IBOutlet weak var errorMessage: UILabel!
+    
     var loginViewModel: LoginViewModel!
     
     override func viewDidLoad() {
@@ -18,18 +20,22 @@ class LoginViewController: UIViewController {
         
        
         
-         loginViewModel.valid.bind({ isValid in
+         loginViewModel.valid.bind{ isValid in
              if isValid {
+                 
                  NotificationCenter.default.post(name: Notification.Name("LoginStatus"), object: nil)
                  self.dismiss(animated: true) {
                      self.loginViewModel.rsponder?.didLoginFinsish(status: "ok")
+                     
                  }
-
-                 
              }
-        })
+             else{
+                 self.errorMessage.isHidden = false
+             }
+        }
         loginViewModel.alreadyLogedin()
-
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -42,6 +48,8 @@ class LoginViewController: UIViewController {
         loginViewModel.login(username: usernameTF.text ?? "" , pass: passTF.text ?? "")
         usernameTF.text = ""
         passTF.text = ""
+        
+        
 
 
     }

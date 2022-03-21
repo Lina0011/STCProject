@@ -56,11 +56,12 @@ class APIManager {
 
     }
     
-    func loginDetels(username:String , pass:String , completion: @escaping (LoginDetels)->Void ){
+    func loginDetels(username:String , pass:String , completion: @escaping (LoginDetels?)->Void ){
 //        let headers: HTTPHeaders = [
 //            "status": "ok",
 //             "authorization": "hE9ACefQ7FBwoLrZjQx04u89EpE="
 //        ]
+      
         let parameters: [String: Any] = [
             "username":username ,
             "pass":pass
@@ -76,6 +77,8 @@ class APIManager {
             if let loginDetels = try? JSONDecoder().decode(LoginDetels.self, from: response.data ?? .init()){
                 
                 completion(loginDetels)
+            }else{
+                completion(nil)
             }
         }
         

@@ -28,17 +28,29 @@ class LoginViewModel: BaseViewModel {
             self.valid.value = true
 
         }
+        
+        
     }
     
     func login (username: String , pass: String) {
         APIManager.shared.loginDetels(username: username, pass: pass) { login in
-            debugPrint(login)
-            if login.status == "ok" && !login.authorization.isEmpty{
-                UserDefaults.standard.authorization = login.authorization
+            
+            if login?.status == "ok" && !(login?.authorization.isEmpty ?? false){
+                UserDefaults.standard.authorization = login?.authorization
                 UserDefaults.standard.synchronize()
                 self.valid.value = true
             }
+            else{
+                self.valid.value = false
+            }
+            
+
         }
+        
+        
+       
+//        print ("error")
+//        self.valid.value = false
     }
     
     static func logout(){

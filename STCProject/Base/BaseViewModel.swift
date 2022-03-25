@@ -6,11 +6,17 @@
 //
 
 import Foundation
+import UIKit
+struct emptyStatus{
+    var img:UIImage?
+    var txt:String?
+}
 
 class BaseViewModel {
  
     var refeshUI = Dynamic<Bool>(value: false)
     var loading = Dynamic<Bool>(value: false)
+    var isEmpty = Dynamic<emptyStatus>(value: emptyStatus(img: UIImage(named: "no-image"), txt: "No content here!"))
     
     
     func showLoad (){
@@ -19,6 +25,11 @@ class BaseViewModel {
     
     func hideLoad (){
         loading.value = false
+    }
+    
+    func handleEmptyStatus(img: UIImage , txt: String){
+        hideLoad()
+        isEmpty.value = emptyStatus(img: img, txt: txt)
     }
 
 }

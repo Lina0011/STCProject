@@ -4,7 +4,7 @@
 //
 //  Created by Lina on 07/08/1443 AH.
 //
-
+import SwiftyDrop
 import UIKit
 class DeepLinkParsing {
     
@@ -26,6 +26,8 @@ class DeepLinkParsing {
     
         guard let deepLink = ScreenDeepLink(rawValue: host) else {
             print ("not found \(host)")
+           
+            Drop.down("Unavailable page", state: .error)
             return nil
         }
 

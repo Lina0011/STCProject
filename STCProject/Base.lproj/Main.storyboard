@@ -132,6 +132,7 @@
                     </view>
                     <connections>
                         <outlet property="ProdImg" destination="poD-qp-r3Z" id="miU-yD-a0S"/>
+                        <outlet property="share" destination="dUv-mg-HVp" id="Afz-D3-V1R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPE-gg-HF2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

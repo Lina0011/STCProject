@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ProductDetelsViewModel:BaseViewModel {
     var prodDetels: Product?
@@ -26,8 +27,13 @@ class ProductDetelsViewModel:BaseViewModel {
         self.showLoad()
         APIManager.shared.getProductDetels (prodId: selectedId ){ items in
             self.hideLoad()
-            self.prodDetels = items
-            self.refeshUI.value = true
+            if items != nil {
+                self.prodDetels = items
+                self.refeshUI.value = true
+            }else{
+                self.refeshUI.value = false
+            }
+            ////
         }
 
     }

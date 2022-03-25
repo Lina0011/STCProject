@@ -18,6 +18,23 @@ class BaseViewController : UIViewController{
         return indicatorView
     }()
     
+   
+    var imageView = UIImageView()
+    var Emptytext = UITextView()
+  
+   
+    
+    lazy var noImage: UIView = {
+        
+        view.addSubview(imageView)
+        view.addSubview(Emptytext)
+        
+        setUpLayout()
+ 
+        return imageView
+    }()
+    
+    
     
     
     func configrutionView(baseViewModel :BaseViewModel ){
@@ -33,5 +50,41 @@ class BaseViewController : UIViewController{
             }
         }
         
+        baseViewModel.isEmpty.bind { noimg in
+
+                self.imageView.image = noimg.img
+                self.Emptytext.text = noimg.txt
+                self.view.addSubview(self.noImage)
+            }
+        }
+    
+    func setUpLayout(){
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
+        
+       
+        imageView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        imageView.contentMode = .scaleAspectFit
+        
+        
+        Emptytext.translatesAutoresizingMaskIntoConstraints = false
+        Emptytext.font = UIFont.boldSystemFont(ofSize: 18)
+        Emptytext.textAlignment = .center
+        Emptytext.isEditable = false
+        Emptytext.isScrollEnabled = false
+        
+        Emptytext.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30).isActive=true
+        Emptytext.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        Emptytext.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        Emptytext.bottomAnchor.constraint(equalTo: view.bottomAnchor , constant: 0).isActive = true
+    
+        
+        
     }
-}
+        
+    }
+

@@ -55,6 +55,12 @@ class ViewController: BaseViewController,
             self.presentProductDetails(id: id)
             
         }
+        viewModel.presentLogin.bind { presentLogin in
+            if presentLogin == true {
+                self.presentLogin()
+            }
+            
+        }
         configrutionView(baseViewModel: self.viewModel)
 
     
@@ -99,9 +105,9 @@ class ViewController: BaseViewController,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         viewModel.didSelect(indexPath: indexPath)
-        if viewModel.presentLogin{
-            presentLogin()
-        }
+//        if viewModel.presentLogin{
+//            presentLogin()
+//        }
     }
 
     

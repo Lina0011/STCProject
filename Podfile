@@ -8,5 +8,6 @@ target 'STCProject' do
   # Pods for STCProject
  pod 'Kingfisher'
  pod 'Alamofire'
+ pod 'SwiftyDrop', '~>4.0'
 
 end

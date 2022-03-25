@@ -13,7 +13,7 @@ class ViewModel: BaseViewModel,LoginViewModelResponder {
     var productList: ProductList?
     var productId = Dynamic<String>(value: "")
     var selectedProduct = ""
-    var presentLogin = false
+    var presentLogin = Dynamic<Bool>(value: false)
     
     var data : [Product] {
         return productList?.products ?? []
@@ -34,12 +34,14 @@ class ViewModel: BaseViewModel,LoginViewModelResponder {
         if LoginViewModel.isLogedin {
             self.productId.value = selectedProduct
         }else {
-            self.presentLogin = true
+            self.presentLogin.value = true
       
         }
     }
     func didLoginFinsish(status: String) {
+        if !selectedProduct.isEmpty{
         self.productId.value = selectedProduct
+        }
     }
 
 }

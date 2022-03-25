@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum ScreenDeepLink: String {
    case home
    case product
+   
     var isPrivate : Bool {
         switch self {
         case .home:
             return false
         case .product:
             return true
+      
         }
     }
     
